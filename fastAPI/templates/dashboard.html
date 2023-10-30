@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>YEARLY OVERVIEW</h1>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <h4>Expected Breakeven</h4>
+                <p>{{ expected_breakeven }}</p>
+            </div>
+            <div class="col-md-3">
+                <h4>Yearly Operating Income</h4>
+                <p>{{ yearly_operating_income }}</p>
+            </div>
+            <div class="col-md-3">
+                <h4>Annual Revenue</h4>
+                <p>{{ annual_revenue }}</p>
+            </div>
+            <div class="col-md-3">
+                <h4>Operating expenses</h4>
+                <p>{{ operating_expenses }}</p>
+            </div>
+        </div>
+        <!-- You can integrate the graph code here -->
+    </div>
+
+    <!-- templates/index.html -->
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.average_daily_rate.label }}<br>{{ form.average_daily_rate() }}</p>
+        <p>{{ form.cost_of_cabin.label }}<br>{{ form.cost_of_cabin() }}</p>
+        <p>{{ form.installation_and_transport_expenses.label }}<br>{{ form.installation_and_transport_expenses() }}</p>
+        <p>{{ form.land_setup_expenses.label }}<br>{{ form.land_setup_expenses() }}</p>
+        <p>{{ form.labor_cost.label }}<br>{{ form.labor_cost() }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    {% if result %}
+        <div>{{ result }}</div>
+    {% endif %}
+
+</body>
+
+</html>
